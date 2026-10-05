@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High-Current Buck Converter — Bruno Lauer</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header style="padding: 36px 0 24px;">
+    <nav class="links" style="margin-bottom: 16px;">
+      <a href="../index.html">← Home</a>
+      <a href="index.html">All Projects</a>
+      <a href="../about.html">About</a>
+      <a href="../resume.html">Résumé</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="card-top">
+      <h1>High-Current Buck Converter — 100A @ 1V</h1>
+      <span class="badge">Power Electronics</span>
+    </div>
+    <p class="tagline">Complete closed-loop power supply designed from schematic through PCB layout, assembly, and rigorous performance validation.</p>
+  </header>
+
+  <section style="padding: 32px 0;">
+    <h2>Project Overview</h2>
+    <p class="section-sub">A comprehensive power electronics design project focusing on high-amperage step-down conversion with tight regulation, thermal management, and EMI suppression.</p>
+
+    <h2>Engineering Highlights</h2>
+    <ul>
+      <li><strong>Closed-Loop Control:</strong> Implemented real-time current regulation in C on microcontroller hardware with Hall-effect current feedback and op-amp signal conditioning.</li>
+      <li><strong>Gate Drive & Switching:</strong> Configured half-bridge gate drivers driving high-current MOSFETs with optimized dead-time and anti-aliasing RC input filters.</li>
+      <li><strong>Debugging & Troubleshooting:</strong> Diagnosed non-deterministic hardware PWM jitter using an oscilloscope, traced the root cause to timer conflicts, and successfully refactored to timer-controlled hardware PWM.</li>
+      <li><strong>Precision:</strong> Achieved ~5% current measurement accuracy through calibration routines and software moving-average filtering.</li>
+    </ul>
+
+    <div class="tags" style="margin-top: 24px;">
+      <span class="tag">EAGLE PCB</span>
+      <span class="tag">Power Electronics</span>
+      <span class="tag">C Firmware</span>
+      <span class="tag">Closed-Loop Control</span>
+      <span class="tag">Oscilloscope Diagnostics</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>Bruno Lauer · <a href="https://github.com/Blauer4096" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank">LinkedIn</a> · <a href="mailto:lb2017dec5@gmail.com">Email</a></p>
+  </footer>
+</div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

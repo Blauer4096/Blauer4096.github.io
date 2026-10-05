@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High-Current Spot Welder Power Electronics — Bruno Lauer</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header style="padding: 36px 0 24px;">
+    <nav class="links" style="margin-bottom: 16px;">
+      <a href="../index.html">← Home</a>
+      <a href="index.html">All Projects</a>
+      <a href="../about.html">About</a>
+      <a href="../resume.html">Résumé</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="card-top">
+      <h1>High-Current Resistance Spot Welder</h1>
+      <span class="badge">Power Electronics</span>
+    </div>
+    <p class="tagline">Power electronics conversion system converting 18V / 10A input to a controlled 100A / 1V output for precision resistance spot welding.</p>
+  </header>
+
+  <section style="padding: 32px 0;">
+    <h2>Project Overview</h2>
+    <p class="section-sub">Developed at Western University (Winter 2025). Resistance spot welding requires extremely high current at low voltage to generate localized Joule heating across metal interfaces. This project designed, simulated, and tested a modified buck converter topology paired with closed-loop PI current regulation.</p>
+
+    <h2>Power Electronics & Control Design</h2>
+    <ul>
+      <li><strong>Power Stage:</strong> Modified step-down buck converter designed for 15kHz switching frequency, utilizing Vishay SISS54DN MOSFETs (185.6A rating, 1.06mΩ Rds_on) and TI UCC27714 half-bridge gate drivers.</li>
+      <li><strong>Signal Conditioning:</strong> Hall-effect current sensing coupled with precision op-amp conditioning (3.2x gain stage) feeding into microcontroller ADCs with anti-aliasing RC filtering.</li>
+      <li><strong>Embedded Firmware:</strong> Arduino-based user interface (potentiometer + push button) with PI current regulation tuned via Ziegler-Nichols methods.</li>
+      <li><strong>Validation:</strong> Comprehensive test plan covering pre-population continuity checks, MOSFET thermal testing, PWM isolation, and efficiency benchmarking (target ~88% efficiency).</li>
+    </ul>
+
+    <h2>Technical Diagrams & Test Plans</h2>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
+      <div class="card" style="padding: 12px;"><img src="../assets/images/spot-welder/review-04.png" alt="Schematic Diagram" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">Power Stage Schematic</p></div>
+      <div class="card" style="padding: 12px;"><img src="../assets/images/spot-welder/review-08.png" alt="Control Flowchart" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">Firmware PI Control Flowchart</p></div>
+      <div class="card" style="padding: 12px;"><img src="../assets/images/spot-welder/testplan-2.png" alt="Test Procedures" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">Hardware Verification & Test Points</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Bruno Lauer · <a href="https://github.com/Blauer4096" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank">LinkedIn</a> · <a href="mailto:lb2017dec5@gmail.com">Email</a></p>
+  </footer>
+</div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

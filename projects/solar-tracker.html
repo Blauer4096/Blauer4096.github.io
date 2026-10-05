@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Tracker: 2-Axis Gimbal System — Bruno Lauer</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header style="padding: 36px 0 24px;">
+    <nav class="links" style="margin-bottom: 16px;">
+      <a href="../index.html">← Home</a>
+      <a href="index.html">All Projects</a>
+      <a href="../about.html">About</a>
+      <a href="../resume.html">Résumé</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="card-top">
+      <h1>Solar Tracker — 2-Axis Gimbal System</h1>
+      <span class="badge">Embedded</span>
+    </div>
+    <p class="tagline">Embedded two-axis solar tracking platform engineered to boost photovoltaic panel efficiency by 5–10% using photoresistor feedback and servo-driven gimbals.</p>
+  </header>
+
+  <section style="padding: 32px 0;">
+    <h2>Project Overview</h2>
+    <p class="section-sub">Developed at Western University (April 2024). Standard fixed photovoltaic installations achieve only ~20% energy conversion efficiency due to suboptimal solar incidence angles throughout the day. This project designed and validated an active 2-axis solar tracking and self-maintenance system.</p>
+
+    <h2>Key Specifications & Architecture</h2>
+    <ul>
+      <li><strong>Hardware Platform:</strong> Arduino UNO microcontroller, 5x7" photovoltaic test panel, dual servo motors (azimuth and elevation axes), 4 directional photoresistors (LDRs).</li>
+      <li><strong>Control Loop:</strong> Differential analog light sensing with threshold hysteresis to prevent servo jitter; iterative PID parameter tuning for stable tracking response.</li>
+      <li><strong>Tracking Efficiency:</strong> Achieved 82% tracking efficiency across simulated diurnal arcs.</li>
+      <li><strong>Additional Mechanisms:</strong> Evaluated multi-augmentation strategies via AHP decision matrix, incorporating a self-cleaning wiper mechanism concept for dust and debris mitigation.</li>
+    </ul>
+
+    <h2>System Documentation & Figures</h2>
+    <p class="section-sub">Selected architectural diagrams and test logs extracted from project documentation:</p>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
+      <div class="card" style="padding: 12px;"><img src="../assets/images/solar-tracker/page-02.png" alt="Solar Tracker System Overview" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">System Architecture & Layout</p></div>
+      <div class="card" style="padding: 12px;"><img src="../assets/images/solar-tracker/page-06.png" alt="Decision Matrix" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">AHP Decision Matrix</p></div>
+      <div class="card" style="padding: 12px;"><img src="../assets/images/solar-tracker/page-10.png" alt="Circuit & PCB Design" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">Schematic & PCB Layout</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Bruno Lauer · <a href="https://github.com/Blauer4096" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank">LinkedIn</a> · <a href="mailto:lb2017dec5@gmail.com">Email</a></p>
+  </footer>
+</div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

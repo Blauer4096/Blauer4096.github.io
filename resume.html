@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — Bruno Lauer</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand">Bruno Lauer</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects/index.html">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <header class="page-header">
+      <p class="breadcrumb"><a href="index.html">Home</a> / Resume</p>
+      <h1>Resume</h1>
+      <a href="assets/pdfs/BrunoLauer_Master_v2.pdf" class="download-btn" target="_blank" download>
+        &#11015; Download PDF
+      </a>
+    </header>
+
+    <div class="resume-layout">
+
+      <!-- Education -->
+      <div class="resume-section">
+        <h2>Education</h2>
+        <div class="resume-entry">
+          <h3>B.Eng. Electrical Engineering &amp; Biomedical Engineering (Co-op)</h3>
+          <p class="meta">Western University &mdash; London, ON &mdash; 2022 &ndash; 2026</p>
+          <p>Cumulative GPA: ~3.8 &middot; Dean's Honor List</p>
+          <p>Relevant coursework: Power Systems, Electronics, Circuit Analysis, Embedded Systems, Control Systems, Biomedical Instrumentation, Biophysics, Cell Biology, Biochemistry, Molecular Biology, Schematic Design.</p>
+        </div>
+        <div class="resume-entry">
+          <h3>Welding Certification, Intermediate</h3>
+          <p class="meta">Mohawk College &mdash; Hamilton, ON &mdash; Jun 2022 &ndash; Aug 2023</p>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="resume-section">
+        <h2>Certifications</h2>
+        <ul>
+          <li>AI Fluency: Framework and Foundations &mdash; Claude Academy, Anthropic &mdash; 2026</li>
+          <li>Welding, Intermediate Certification &mdash; Mohawk College &mdash; 2022</li>
+        </ul>
+      </div>
+
+      <!-- Skills -->
+      <div class="resume-section">
+        <h2>Technical Skills</h2>
+        <ul>
+          <li><strong>Languages:</strong> C/C++, Python, Java, Bash/Shell scripting</li>
+          <li><strong>Hardware/Electronics:</strong> PCB design (EAGLE), analog front-end, power electronics (MOSFETs, gate drivers, bootstrap circuits), Hall-effect sensing, op-amp conditioning, oscilloscope diagnostics, soldering</li>
+          <li><strong>Embedded/Control:</strong> Arduino/AVR firmware, closed-loop current and position control, PWM, ADC sampling, servo and ESC integration, PI/PID control</li>
+          <li><strong>CAD:</strong> SolidWorks, AutoCAD</li>
+          <li><strong>Data/ML:</strong> scikit-learn, pandas, NumPy, matplotlib; supervised regression, feature engineering</li>
+          <li><strong>Biomedical/Lab:</strong> cell culture, PCR/qPCR, flow cytometry, ELISA, lab notebook documentation</li>
+          <li><strong>OS:</strong> Windows 10/11 (Advanced), Linux (Ubuntu/Arch)</li>
+          <li><strong>Tools:</strong> Git, MS Office Suite</li>
+        </ul>
+      </div>
+
+      <!-- Engineering Projects -->
+      <div class="resume-section">
+        <h2>Engineering Projects</h2>
+
+        <div class="resume-entry">
+          <h3>High-Current Buck Converter &mdash; 100 A @ 1 V</h3>
+          <p class="meta">Power Electronics &mdash; Arduino C Firmware</p>
+          <ul>
+            <li>Complete closed-loop power supply from schematic through PCB layout, assembly, and validation.</li>
+            <li>Hall-effect current sensing with op-amp signal conditioning and anti-aliasing RC filters.</li>
+            <li>MOSFET switching with half-bridge gate driver; diagnosed and fixed non-deterministic hardware PWM with timer-controlled PWM.</li>
+            <li>~5% current measurement accuracy via calibration and moving-average filtering.</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <h3>BLDC Motor &mdash; Design, Fabrication &amp; Validation</h3>
+          <p class="meta">Electromechanical &mdash; SolidWorks &mdash; ECE 3332a</p>
+          <ul>
+            <li>Designed and built a custom in-runner BLDC motor (14-pole/12-slot, N52 magnets) from requirements to testing.</li>
+            <li>SolidWorks modeling of stator/rotor geometry and manufacturing drawings.</li>
+            <li>Iterative performance validation with ESC module; identified and diagnosed friction and shaft alignment issues.</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <h3>Solar Tracker &mdash; Embedded 2-Axis Gimbal System</h3>
+          <p class="meta">Embedded Systems &mdash; Arduino C &mdash; ECE 2242</p>
+          <ul>
+            <li>Designed full two-axis solar tracking platform with dual servo motors and 4-photoresistor feedback on Arduino UNO.</li>
+            <li>PID control algorithm achieving 82% tracking efficiency through systematic sensor calibration and parameter tuning.</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <h3>Spot Welder &mdash; High-Current Power Electronics</h3>
+          <p class="meta">Power Electronics &mdash; Arduino C &mdash; ECE 3399</p>
+          <ul>
+            <li>100 A @ 1 V spot welding supply via modified buck converter (18 V / 10 A input); 15 kHz switching.</li>
+            <li>MOSFET/gate driver selection with thermal analysis; PI controller tuned via Ziegler-Nichols on Arduino.</li>
+            <li>Hall-effect sensing, op-amp conditioning, anti-aliasing filter, squeeze/weld timing UI.</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <h3>House Price Prediction &mdash; Supervised ML Pipeline</h3>
+          <p class="meta">Machine Learning &mdash; Python / scikit-learn</p>
+          <ul>
+            <li>End-to-end regression: data cleaning, feature engineering, model comparison (linear regression, random forest, gradient boosting), cross-validation, RMSE evaluation.</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <h3>Assistive Inhaler Device</h3>
+          <p class="meta">Biomedical &mdash; Human-Centred Design</p>
+          <ul>
+            <li>Co-led full engineering design cycle for a patient-facing device for visually impaired users; requirements through formal evaluation.</li>
+            <li>Iterative prototyping integrating electrical, mechanical, and software subsystems.</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <h3>As-Built CAD Documentation &mdash; Commercial Facility</h3>
+          <p class="meta">CAD &mdash; AutoCAD DWG</p>
+          <ul>
+            <li>Independent fixed-price contract: site walkthrough, field measurements, AutoCAD drafting, DWG/PDF delivery, fire evacuation plan revisions.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Work Experience -->
+      <div class="resume-section">
+        <h2>Work Experience</h2>
+        <div class="resume-entry">
+          <h3>Independent CAD &amp; Technical Documentation Consultant</h3>
+          <p class="meta">Grand River Enterprises &mdash; Ohsweken, ON &mdash; Jul 2026 &ndash; Sep 2026</p>
+        </div>
+        <div class="resume-entry">
+          <h3>General Laborer</h3>
+          <p class="meta">Abcott Construction &mdash; Brantford, ON &mdash; May 2025 &ndash; Aug 2025</p>
+        </div>
+        <div class="resume-entry">
+          <h3>Low-Voltage Electrical Technician</h3>
+          <p class="meta">Cable Assembly LTD. &mdash; Brantford, ON &mdash; Aug 2017 &ndash; Aug 2023 &mdash; 2,000+ hours</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>Bruno Lauer &middot; <a href="https://github.com/Blauer4096" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

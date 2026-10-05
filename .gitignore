@@ -1,0 +1,8 @@
+# Raw source materials
+Context/
+[Cc]ontext/
+
+# System / build artifacts
+.DS_Store
+Thumbs.db
+*.log

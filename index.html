@@ -4,395 +4,181 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bruno Lauer — Engineering Projects</title>
-<style>
-  :root {
-    --bg: #0f1115;
-    --surface: #171a21;
-    --surface-2: #1e222b;
-    --border: #2a2f3a;
-    --text: #e8eaf0;
-    --muted: #9aa3b2;
-    --accent: #4f9cf9;
-    --accent-soft: rgba(79, 156, 249, 0.12);
-    --radius: 14px;
-  }
-
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #f6f7f9;
-      --surface: #ffffff;
-      --surface-2: #f0f2f5;
-      --border: #e0e4ea;
-      --text: #1a1d23;
-      --muted: #5c6572;
-      --accent: #1f6feb;
-      --accent-soft: rgba(31, 111, 235, 0.10);
-    }
-  }
-
-  * { box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                 Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  /* ---------- Header ---------- */
-  header {
-    padding: 72px 0 48px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  header h1 {
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
-    margin: 0 0 8px;
-    letter-spacing: -0.02em;
-  }
-
-  .tagline {
-    color: var(--muted);
-    font-size: 1.05rem;
-    max-width: 640px;
-    margin: 0 0 24px;
-  }
-
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: var(--surface);
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: border-color .15s, transform .15s;
-  }
-
-  .links a:hover {
-    border-color: var(--accent);
-    transform: translateY(-1px);
-  }
-
-  /* ---------- Sections ---------- */
-  section { padding: 56px 0; }
-
-  h2 {
-    font-size: 1.35rem;
-    margin: 0 0 6px;
-    letter-spacing: -0.01em;
-  }
-
-  .section-sub {
-    color: var(--muted);
-    font-size: 0.95rem;
-    margin: 0 0 28px;
-  }
-
-  /* ---------- Project grid ---------- */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-  }
-
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
-    transition: border-color .18s, transform .18s;
-  }
-
-  .card:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-  }
-
-  .card-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 4px;
-  }
-
-  .card h3 {
-    font-size: 1.08rem;
-    margin: 0;
-    line-height: 1.35;
-  }
-
-  .badge {
-    flex-shrink: 0;
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 4px 9px;
-    border-radius: 999px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    border: 1px solid transparent;
-    white-space: nowrap;
-  }
-
-  .card .summary {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin: 8px 0 14px;
-  }
-
-  .card ul {
-    margin: 0 0 18px;
-    padding-left: 18px;
-    font-size: 0.9rem;
-  }
-
-  .card ul li { margin-bottom: 6px; }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: auto;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-  }
-
-  .tag {
-    font-size: 0.74rem;
-    color: var(--muted);
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 3px 8px;
-  }
-
-  /* ---------- Footer ---------- */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0 48px;
-    color: var(--muted);
-    font-size: 0.85rem;
-    text-align: center;
-  }
-
-  footer a { color: var(--accent); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-</style>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="wrap">
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand">Bruno Lauer</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects/index.html">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
 
-  <!-- ================= HEADER ================= -->
-  <header>
+<header class="hero">
+  <div class="wrap">
+    <p class="hero-sub">Electrical &amp; Computer Engineering</p>
     <h1>Bruno Lauer</h1>
     <p class="tagline">
-      Electrical &amp; computer engineering student — power electronics, embedded
-      control, and applied machine learning. Below is a selection of projects
-      built from schematic through firmware, fabrication, and validation.
+      Power electronics, embedded control, and applied machine learning — built from
+      schematic through firmware, fabrication, and validation. A selection of projects
+      spanning hardware design, firmware, and data.
     </p>
     <nav class="links">
-      <a href="https://github.com/your-username">GitHub</a>
-      <a href="https://linkedin.com/in/your-profile">LinkedIn</a>
-      <a href="mailto:you@example.com">Email</a>
-      <a href="resume.pdf">Résumé (PDF)</a>
+      <a href="https://github.com/Blauer4096" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:lb2017dec5@gmail.com">Email</a>
+      <a href="resume.html">Resume</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <!-- ================= PROJECTS ================= -->
-  <section id="projects">
-    <h2>Engineering Projects</h2>
-    <p class="section-sub">Hardware, firmware, and software projects.</p>
+<main>
+  <div class="wrap">
+    <section id="projects">
+      <p class="section-label">Portfolio</p>
+      <h2>Engineering Projects</h2>
+      <p class="section-sub">Hardware, firmware, and software — from concept through validation.</p>
+      <div class="grid">
 
-    <div class="grid">
+        <a href="projects/spot-welder.html" class="card-link">
+          <article class="card">
+            <div class="card-top"><h3>Spot Welder — High-Current Power Electronics</h3><span class="badge">Power</span></div>
+            <p class="summary">A 100 A @ 1 V closed-loop spot welding supply from component selection through PCB layout and PI control firmware.</p>
+            <ul>
+              <li>Modified buck converter: 18 V / 10 A input &rarr; 100 A @ 1 V output.</li>
+              <li>MOSFET and gate driver selection with thermal analysis; 15 kHz switching.</li>
+              <li>PI controller tuned via Ziegler-Nichols on Arduino with Hall-effect sensing.</li>
+              <li>Anti-aliasing filter, signal conditioning, and user interface with weld/squeeze timing.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">EAGLE PCB</span><span class="tag">Power Electronics</span><span class="tag">C Firmware</span><span class="tag">PI Control</span><span class="tag">Buck Converter</span>
+            </div>
+          </article>
+        </a>
 
-      <!-- Buck Converter -->
-      <article class="card">
-        <div class="card-top">
-          <h3>High-Current Buck Converter — 100&nbsp;A @ 1&nbsp;V</h3>
-          <span class="badge">Power</span>
-        </div>
-        <p class="summary">
-          Complete closed-loop power supply designed from schematic through PCB
-          layout, assembly, and performance validation.
-        </p>
-        <ul>
-          <li>Closed-loop current control in C on Arduino with Hall-effect sensing
-              and op-amp signal conditioning.</li>
-          <li>MOSFET switching with half-bridge gate driver and anti-aliasing RC filters.</li>
-          <li>Diagnosed non-deterministic hardware PWM via oscilloscope, traced root
-              cause, and replaced with timer-controlled PWM.</li>
-          <li>~5% current measurement accuracy via calibration and moving-average filtering.</li>
-        </ul>
-        <div class="tags">
-          <span class="tag">EAGLE PCB</span>
-          <span class="tag">Power Electronics</span>
-          <span class="tag">C Firmware</span>
-          <span class="tag">Closed-Loop Control</span>
-          <span class="tag">Oscilloscope</span>
-        </div>
-      </article>
+        <a href="projects/buck-converter.html" class="card-link">
+          <article class="card">
+            <div class="card-top"><h3>High-Current Buck Converter — 100&nbsp;A @ 1&nbsp;V</h3><span class="badge">Power</span></div>
+            <p class="summary">Complete closed-loop power supply designed from schematic through PCB layout, assembly, and performance validation.</p>
+            <ul>
+              <li>Closed-loop current control in C on Arduino with Hall-effect sensing and op-amp signal conditioning.</li>
+              <li>MOSFET switching with half-bridge gate driver and anti-aliasing RC filters.</li>
+              <li>Diagnosed non-deterministic hardware PWM via oscilloscope, replaced with timer-controlled PWM.</li>
+              <li>~5% current measurement accuracy via calibration and moving-average filtering.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">EAGLE PCB</span><span class="tag">Power Electronics</span><span class="tag">C Firmware</span><span class="tag">Closed-Loop Control</span><span class="tag">Oscilloscope</span>
+            </div>
+          </article>
+        </a>
 
-      <!-- BLDC Motor -->
-      <article class="card">
-        <div class="card-top">
-          <h3>BLDC Motor — Design, Fabrication &amp; Validation</h3>
-          <span class="badge">Electromechanical</span>
-        </div>
-        <p class="summary">
-          Custom in-runner brushless DC motor designed, built, and tested end to end.
-        </p>
-        <ul>
-          <li>Selected pole/slot configuration to minimize cogging torque; modeled
-              rotor and stator geometry in SolidWorks.</li>
-          <li>Generated manufacturing drawings and assembled components with attention
-              to magnetic alignment and mechanical balance.</li>
-          <li>Validated performance with an ESC module using structured torque/speed
-              testing and iterative refinement.</li>
-        </ul>
-        <div class="tags">
-          <span class="tag">SolidWorks</span>
-          <span class="tag">Motor Control</span>
-          <span class="tag">Fabrication</span>
-          <span class="tag">Electromechanical Design</span>
-        </div>
-      </article>
+        <a href="projects/bldc-motor.html" class="card-link">
+          <article class="card">
+            <div class="card-top"><h3>BLDC Motor — Design, Fabrication &amp; Validation</h3><span class="badge">Electromechanical</span></div>
+            <p class="summary">Custom in-runner brushless DC motor designed, built, and tested end to end.</p>
+            <ul>
+              <li>Selected pole/slot configuration to minimize cogging torque; modeled rotor and stator geometry in SolidWorks.</li>
+              <li>Generated manufacturing drawings and assembled components with attention to magnetic alignment and mechanical balance.</li>
+              <li>Validated performance with an ESC module using structured torque/speed testing and iterative refinement.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">SolidWorks</span><span class="tag">Motor Control</span><span class="tag">Fabrication</span><span class="tag">Electromechanical Design</span>
+            </div>
+          </article>
+        </a>
 
-      <!-- Solar Tracker -->
-      <article class="card">
-        <div class="card-top">
-          <h3>Solar Tracker — 2-Axis Gimbal System</h3>
-          <span class="badge">Embedded</span>
-        </div>
-        <p class="summary">
-          Embedded two-axis tracking platform using servo motors and photoresistor feedback.
-        </p>
-        <ul>
-          <li>Designed and coded the full tracking system in C on Arduino.</li>
-          <li>Achieved 82% tracking efficiency through iterative sensor calibration
-              and PID parameter tuning.</li>
-          <li>Maintained structured test logs across all development cycles to guide
-              systematic improvement.</li>
-        </ul>
-        <div class="tags">
-          <span class="tag">Arduino</span>
-          <span class="tag">C</span>
-          <span class="tag">Servo Control</span>
-          <span class="tag">PID Tuning</span>
-          <span class="tag">Sensor Calibration</span>
-        </div>
-      </article>
+        <a href="projects/solar-tracker.html" class="card-link">
+          <article class="card">
+            <div class="card-top"><h3>Solar Tracker — 2-Axis Embedded Gimbal</h3><span class="badge">Embedded</span></div>
+            <p class="summary">Embedded two-axis tracking platform using servo motors and photoresistor feedback.</p>
+            <ul>
+              <li>Designed and coded the full tracking system in C on Arduino.</li>
+              <li>Achieved 82% tracking efficiency through iterative sensor calibration and PID parameter tuning.</li>
+              <li>Maintained structured test logs across all development cycles to guide systematic improvement.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Arduino</span><span class="tag">C</span><span class="tag">Servo Control</span><span class="tag">PID Tuning</span><span class="tag">Sensor Calibration</span>
+            </div>
+          </article>
+        </a>
 
-      <!-- House Price ML -->
-      <article class="card">
-        <div class="card-top">
-          <h3>House Price Prediction — Supervised ML Pipeline</h3>
-          <span class="badge">Machine Learning</span>
-        </div>
-        <p class="summary">
-          End-to-end regression pipeline built in Python, from raw data to model comparison.
-        </p>
-        <ul>
-          <li>Data cleaning, feature engineering, and model training/comparison
-              (linear regression, random forest, gradient boosting).</li>
-          <li>Cross-validation, RMSE evaluation, and feature-importance visualization.</li>
-          <li>Quantitative reporting of results and model trade-offs.</li>
-        </ul>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">pandas</span>
-          <span class="tag">scikit-learn</span>
-          <span class="tag">NumPy</span>
-          <span class="tag">matplotlib</span>
-        </div>
-      </article>
+        <a href="projects/house-price-ml.html" class="card-link">
+          <article class="card">
+            <div class="card-top"><h3>House Price Prediction — Supervised ML Pipeline</h3><span class="badge">Machine Learning</span></div>
+            <p class="summary">End-to-end regression pipeline built in Python, from raw data to model comparison.</p>
+            <ul>
+              <li>Data cleaning, feature engineering, and model training/comparison (linear regression, random forest, gradient boosting).</li>
+              <li>Cross-validation, RMSE evaluation, and feature-importance visualization.</li>
+              <li>Quantitative reporting of results and model trade-offs.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">NumPy</span><span class="tag">matplotlib</span>
+            </div>
+          </article>
+        </a>
 
-      <!-- Assistive Inhaler -->
-      <article class="card">
-        <div class="card-top">
-          <h3>Assistive Inhaler Device</h3>
-          <span class="badge">Biomedical</span>
-        </div>
-        <p class="summary">
-          Multidisciplinary team project developing a patient-facing assistive device
-          for visually impaired users.
-        </p>
-        <ul>
-          <li>Co-led a full engineering design cycle: requirements definition through
-              formal evaluation.</li>
-          <li>Iterative prototyping with electrical, mechanical, and software integration.</li>
-          <li>Delivered technical presentations under competition constraints.</li>
-        </ul>
-        <div class="tags">
-          <span class="tag">Human-Centred Design</span>
-          <span class="tag">Systems Integration</span>
-          <span class="tag">Prototyping</span>
-          <span class="tag">Cross-Functional</span>
-        </div>
-      </article>
+        <a href="projects/assistive-inhaler.html" class="card-link">
+          <article class="card">
+            <div class="card-top"><h3>Assistive Inhaler Device</h3><span class="badge">Biomedical</span></div>
+            <p class="summary">Multidisciplinary team project developing a patient-facing assistive device for visually impaired users.</p>
+            <ul>
+              <li>Co-led a full engineering design cycle: requirements definition through formal evaluation.</li>
+              <li>Iterative prototyping with electrical, mechanical, and software integration.</li>
+              <li>Delivered technical presentations under competition constraints.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Human-Centred Design</span><span class="tag">Systems Integration</span><span class="tag">Prototyping</span><span class="tag">Cross-Functional</span>
+            </div>
+          </article>
+        </a>
 
-      <!-- CAD Documentation -->
-      <article class="card">
-        <div class="card-top">
-          <h3>As-Built CAD Documentation — Commercial Facility</h3>
-          <span class="badge">CAD</span>
-        </div>
-        <p class="summary">
-          Independent fixed-price contract producing professional as-built drawings
-          for a multi-floor commercial building.
-        </p>
-        <ul>
-          <li>Managed the full project lifecycle from site walkthrough and field
-              measurements to final client deliverables.</li>
-          <li>Produced scaled AutoCAD (DWG) floor plans with structured layers,
-              room numbering, and architectural features.</li>
-          <li>Delivered DWG/PDF packages plus updated fire evacuation plans across
-              multiple revision cycles.</li>
-        </ul>
-        <div class="tags">
-          <span class="tag">AutoCAD</span>
-          <span class="tag">DWG</span>
-          <span class="tag">Field Measurement</span>
-          <span class="tag">Technical Documentation</span>
-        </div>
-      </article>
+        <a href="projects/cad-documentation.html" class="card-link">
+          <article class="card">
+            <div class="card-top"><h3>As-Built CAD Documentation — Commercial Facility</h3><span class="badge">CAD</span></div>
+            <p class="summary">Independent fixed-price contract producing professional as-built drawings for a multi-floor commercial building.</p>
+            <ul>
+              <li>Managed the full project lifecycle from site walkthrough and field measurements to final client deliverables.</li>
+              <li>Produced scaled AutoCAD (DWG) floor plans with structured layers, room numbering, and architectural features.</li>
+              <li>Delivered DWG/PDF packages plus updated fire evacuation plans across multiple revision cycles.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">AutoCAD</span><span class="tag">DWG</span><span class="tag">Field Measurement</span><span class="tag">Technical Documentation</span>
+            </div>
+          </article>
+        </a>
 
-    </div>
-  </section>
+      </div>
+    </section>
+  </div>
+</main>
 
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    <p>
-      Built with plain HTML &amp; CSS ·
-      <a href="https://github.com/your-username">github.com/your-username</a>
-    </p>
-  </footer>
-
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" src="" alt="">
 </div>
 
+<footer>
+  <div class="wrap">
+    <p>
+      Bruno Lauer &middot; Electrical &amp; Computer Engineering &middot; London, ON
+      &nbsp;&middot;&nbsp;
+      <a href="https://github.com/Blauer4096" target="_blank" rel="noopener">GitHub</a>
+      &middot;&nbsp;
+      <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
