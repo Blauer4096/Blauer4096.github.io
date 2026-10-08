@@ -3,51 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>House Price Prediction ML Pipeline — Bruno Lauer</title>
+<title>House Price Prediction: Supervised ML Pipeline — Bruno Lauer</title>
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
-<div class="wrap">
-  <header style="padding: 36px 0 24px;">
-    <nav class="links" style="margin-bottom: 16px;">
-      <a href="../index.html">← Home</a>
-      <a href="index.html">All Projects</a>
-      <a href="../about.html">About</a>
-      <a href="../resume.html">Résumé</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-    <div class="card-top">
-      <h1>House Price Prediction — Supervised ML Pipeline</h1>
-      <span class="badge">Machine Learning</span>
-    </div>
-    <p class="tagline">End-to-end regression pipeline built in Python, spanning robust data preprocessing, feature engineering, model training, and quantitative comparison.</p>
-  </header>
+<body class="light">
 
-  <section style="padding: 32px 0;">
-    <h2>Project Overview</h2>
-    <p class="section-sub">A rigorous machine learning study evaluating various supervised regression models for real estate valuation, emphasizing statistical rigor, feature importance, and generalization.</p>
-
-    <h2>Pipeline Architecture & Methodology</h2>
-    <ul>
-      <li><strong>Data Preprocessing:</strong> Handled missing values, outlier removal, categorical encoding, and feature scaling using pandas and scikit-learn.</li>
-      <li><strong>Feature Engineering:</strong> Developed domain-specific composite features (e.g., total square footage interactions, age-adjusted renovations, location clustering).</li>
-      <li><strong>Model Evaluation:</strong> Trained and benchmarked multiple algorithms including Linear Regression, Random Forest Regressor, and Gradient Boosting.</li>
-      <li><strong>Validation:</strong> Applied k-fold cross-validation and evaluated models using Root Mean Squared Error (RMSE) and R-squared metrics, supported by matplotlib feature-importance visualizations.</li>
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="nav-brand">Bruno Lauer</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="index.html">Projects</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+      <li><a href="../contact.html">Contact</a></li>
     </ul>
-
-    <div class="tags" style="margin-top: 24px;">
-      <span class="tag">Python</span>
-      <span class="tag">pandas</span>
-      <span class="tag">scikit-learn</span>
-      <span class="tag">NumPy</span>
-      <span class="tag">matplotlib</span>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <footer>
-    <p>Bruno Lauer · <a href="https://github.com/Blauer4096" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank">LinkedIn</a> · <a href="mailto:lb2017dec5@gmail.com">Email</a></p>
-  </footer>
+<main>
+  <div class="wrap">
+
+    <header class="page-header">
+      <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Projects</a> / House Price ML</p>
+      <span class="badge">Machine Learning</span>
+      <h1 class="page-title">House Price Prediction: Supervised ML Pipeline</h1>
+      <p class="page-subtitle">An end-to-end supervised regression pipeline in Python that predicts residential sale prices from structured tabular data, built to prioritize leakage-free preprocessing, interpretable feature engineering, and honest model comparison rather than single-score tuning.</p>
+    </header>
+
+    <!-- Specs -->
+    <div class="content-section">
+      <h2 class="section-title">Project Specifications</h2>
+      <table class="specs-table">
+        <tr><th>Role</th><td>Sole Data Scientist & ML Engineer</td></tr>
+        <tr><th>Task</th><td>Supervised regression: predict residential sale price</td></tr>
+        <tr><th>Dataset</th><td>Roughly 1,460 records, 80 raw attributes</td></tr>
+        <tr><th>Pipeline Framework</th><td>scikit-learn Pipeline and ColumnTransformer</td></tr>
+        <tr><th>Models</th><td>Linear Regression, Ridge, Lasso, Random Forest, Gradient Boosting</td></tr>
+        <tr><th>Evaluation</th><td>Weighted & underperforming: RMSE, MAE, R&sup2; via 5-fold CV and 20% held-out test set</td></tr>
+        <tr><th>Metric Reporting</th><td>RMSE in dollars on original scale (back-transformed from log space)</td></tr>
+        <tr><th>Stack</th><td>Python, pandas, NumPy, scikit-learn, matplotlib</td></tr>
+      </table>
+    </div>
+
+    <!-- Overview -->
+    <div class="content-section">
+      <h2 class="section-title">Project Overview</h2>
+      <p>A comparative machine learning study evaluating linear and ensemble regression models on a residential sales dataset of roughly 1,460 records and 80 raw attributes. The goal was not to maximize a single leaderboard metric but to establish a defensible methodology: reproducible preprocessing, fold-safe feature engineering, and evaluation on a held-out test set that never informed training or hyperparameter selection.</p>
+      <p>The pipeline is structured as a scikit-learn Pipeline and ColumnTransformer so that every transform is fit only on training folds, eliminating the target leakage that typically inflates results in ad-hoc notebooks.</p>
+    </div>
+
+    <!-- Data Preprocessing -->
+    <div class="content-section">
+      <h2 class="section-title">Data Preprocessing</h2>
+      <ul>
+        <li>Separated predictors into numeric and categorical streams using ColumnTransformer, applying each transform only within the training fold.</li>
+        <li>Imputed missing numeric values with median and missing categorical values with an explicit "None" level rather than mode, preserving the information that absence of a feature (for example, no basement, no alley access) is itself meaningful.</li>
+        <li>Addressed outliers by examining the interquartile range on sale price and above-grade living area, then winsorizing extreme tails instead of deleting rows, since removal biased the model against high-value properties.</li>
+        <li>Encoded ordinal quality ratings (overall condition, kitchen quality, exterior quality) with an explicit rank mapping to preserve ordering, and applied one-hot encoding to nominal variables.</li>
+        <li>Applied a log transform to the skewed target variable and to right-skewed square footage features, which reduced heteroscedasticity in the residuals and stabilized error variance across price ranges.</li>
+      </ul>
+    </div>
+
+    <!-- Feature Engineering -->
+    <div class="content-section">
+      <h2 class="section-title">Feature Engineering</h2>
+      <ul>
+        <li>Constructed total finished square footage as the sum of basement, first-floor, and second-floor areas, correcting for properties where the raw columns double-counted or omitted below-grade space.</li>
+        <li>Built total bathroom count as a weighted composite (full baths + 0.5 &times; half baths) to produce a single continuous amenity feature.</li>
+        <li>Derived age at sale (year sold minus year built) and years since remodel, then created an interaction term between overall quality and above-grade living area to capture the compounding effect of size and finish quality on valuation.</li>
+        <li>Generated neighborhood-level aggregate price statistics using fold-safe target encoding, computing statistics exclusively on training folds to prevent leakage into validation and test data.</li>
+        <li>Engineered a garage and parking composite feature to consolidate several sparse, correlated columns into a single signal.</li>
+      </ul>
+    </div>
+
+    <!-- Modeling & Evaluation -->
+    <div class="content-section">
+      <h2 class="section-title">Modeling & Evaluation</h2>
+      <ul>
+        <li>Established a Linear Regression baseline, then extended it with Ridge and Lasso regularization to quantify how much of the ensemble's advantage came from nonlinearity versus simple variance reduction.</li>
+        <li>Trained Random Forest and Gradient Boosting regressors with hyperparameters tuned via GridSearchCV over n_estimators, max_depth, learning_rate, and min_samples_leaf, using 5-fold cross-validation on the training split only.</li>
+        <li>Evaluated on a 20 percent held-out test set using RMSE, MAE, and R&sup2;. Reported RMSE on the original price scale after back-transforming from log space so the error is interpretable in dollars.</li>
+        <li>Diagnosed underfitting and overfitting by comparing training and cross-validation error curves against max_depth and n_estimators, which showed the Random Forest saturating early while Gradient Boosting continued to improve at lower learning rates.</li>
+        <li>Generated feature-importance visualizations in matplotlib, cross-checking impurity-based importance against permutation importance to avoid over-trusting high-cardinality features.</li>
+        <li>Produced residual plots and a predicted-versus-actual scatter plot to verify that error was homoscedastic and not systematically worse at the price extremes.</li>
+      </ul>
+    </div>
+
+    <!-- Results -->
+    <div class="content-section">
+      <h2 class="section-title">Results</h2>
+      <p>Gradient Boosting achieved the strongest held-out performance, with R&sup2; near 0.90 and RMSE in the low 20,000 dollar range, outperforming the regularized linear baseline by a meaningful margin on the same split. Permutation importance consistently ranked overall quality, total finished square footage, and neighborhood target encoding as the dominant predictors, which matched domain intuition and served as a sanity check on the pipeline.</p>
+    </div>
+
+    <!-- Prev/Next -->
+    <nav class="project-nav">
+      <a href="solar-tracker.html" class="project-nav-btn prev">
+        <span class="nav-label">&#8592; Previous</span>
+        <span class="nav-title">Solar Tracker</span>
+      </a>
+      <a href="assistive-inhaler.html" class="project-nav-btn next">
+        <span class="nav-label">Next &#8594;</span>
+        <span class="nav-title">Assistive Inhaler</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" src="" alt="">
 </div>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Bruno Lauer &middot; <a href="https://github.com/Blauer4096" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
 <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -6,47 +6,145 @@
 <title>Assistive Inhaler Device — Bruno Lauer</title>
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
-<div class="wrap">
-  <header style="padding: 36px 0 24px;">
-    <nav class="links" style="margin-bottom: 16px;">
-      <a href="../index.html">← Home</a>
-      <a href="index.html">All Projects</a>
-      <a href="../about.html">About</a>
-      <a href="../resume.html">Résumé</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-    <div class="card-top">
-      <h1>Assistive Inhaler Device</h1>
-      <span class="badge">Biomedical</span>
-    </div>
-    <p class="tagline">Human-centred multidisciplinary engineering project developing an accessible, patient-facing medication delivery and feedback device for visually impaired users.</p>
-  </header>
+<body class="light">
 
-  <section style="padding: 32px 0;">
-    <h2>Project Overview</h2>
-    <p class="section-sub">Combining electrical, mechanical, and biomedical principles to solve real-world accessibility challenges in respiratory medication management.</p>
-
-    <h2>Key Contributions & Design Process</h2>
-    <ul>
-      <li><strong>User-Centred Requirements:</strong> Conducted stakeholder analysis and translated clinical/accessibility needs into rigorous engineering specifications.</li>
-      <li><strong>Systems Integration:</strong> Co-designed tactile feedback mechanisms, acoustic dose confirmation, and robust mechanical enclosures.</li>
-      <li><strong>Prototyping & Testing:</strong> Iterative rapid prototyping (3D printing and breadboard testing) to ensure ergonomic comfort and reliable operation.</li>
-      <li><strong>Technical Communication:</strong> Delivered comprehensive design reviews and technical presentations under competitive constraints.</li>
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="nav-brand">Bruno Lauer</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="index.html">Projects</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+      <li><a href="../contact.html">Contact</a></li>
     </ul>
-
-    <div class="tags" style="margin-top: 24px;">
-      <span class="tag">Human-Centred Design</span>
-      <span class="tag">Biomedical Systems</span>
-      <span class="tag">Prototyping</span>
-      <span class="tag">Cross-Functional Engineering</span>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <footer>
-    <p>Bruno Lauer · <a href="https://github.com/Blauer4096" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank">LinkedIn</a> · <a href="mailto:lb2017dec5@gmail.com">Email</a></p>
-  </footer>
+<main>
+  <div class="wrap">
+
+    <header class="page-header">
+      <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Projects</a> / Assistive Inhaler</p>
+      <span class="badge">Biomedical</span>
+      <h1 class="page-title">Assistive Inhaler Device</h1>
+      <p class="page-subtitle">A human-centred multidisciplinary engineering project delivering a patient-facing metered-dose inhaler attachment that provides tactile and acoustic dose confirmation for visually impaired users, addressing the coordination and dose-tracking failures that drive poor respiratory outcomes.</p>
+    </header>
+
+    <!-- Specs -->
+    <div class="content-section">
+      <h2 class="section-title">Project Specifications</h2>
+      <table class="specs-table">
+        <tr><th>Role</th><td>Embedded Firmware & Sensing Lead</td></tr>
+        <tr><th>Program</th><td>Biomedical Engineering, Human-Centred Multidisciplinary Project, Western University</td></tr>
+        <tr><th>Application</th><td>Metered-dose inhaler dose-confirmation attachment for low-vision users</td></tr>
+        <tr><th>Feedback Method</th><td>Non-visual: ERM vibration pulse plus piezo acoustic cue</td></tr>
+        <tr><th>Feedback Latency Requirement</th><td>Under 500 milliseconds from actuation to confirmation</td></tr>
+        <tr><th>Sensing Architecture</th><td>Redundant: inhalation flow detection plus independent canister actuation detection</td></tr>
+        <tr><th>Control Platform</th><td>AVR-class microcontroller, C firmware, non-blocking state machine</td></tr>
+        <tr><th>Tools</th><td>SolidWorks, FDM prototyping, soldering, syringe-driven flow-source bench rig</td></tr>
+      </table>
+    </div>
+
+    <!-- Overview -->
+    <div class="content-section">
+      <h2 class="section-title">Project Overview</h2>
+      <p>Metered-dose inhalers require the user to simultaneously actuate the canister and inhale at the correct flow rate, a coordination task that is difficult for anyone and disproportionately difficult for users with low or no vision. Existing adherence aids address counting or timing in isolation, and most rely on visual indicators.</p>
+      <p>This project integrated sensing, embedded control, and mechanical design into a single attachment that confirms correct actuation through non-visual feedback, while preserving the form factor and canister compatibility of the standard device.</p>
+    </div>
+
+    <!-- User-Centred Requirements -->
+    <div class="content-section">
+      <h2 class="section-title">User-Centred Requirements</h2>
+      <ul>
+        <li>Conducted stakeholder analysis across patients, caregivers, and clinical practitioners to identify the dominant failure modes: missed actuation, actuated-but-not-inhaled doses, double dosing, and loss of dose count.</li>
+        <li>Translated findings into a requirements set covering feedback latency under 500 milliseconds, actuation detection reliability across the full canister life, one-handed operation, orientation-independent use, compatibility with standard canisters, and a target battery life measured in months rather than days.</li>
+        <li>Performed a failure mode and effects analysis on the dose-confirmation chain to identify where a false positive (confirming a dose that did not occur) would be more dangerous than a false negative, which drove the decision to require redundant sensing before feedback is issued.</li>
+        <li>Mapped the user journey from device retrieval through actuation to breath-hold, using it to place feedback where it reinforces the correct behavior rather than simply logging it.</li>
+      </ul>
+    </div>
+
+    <!-- Systems Integration -->
+    <div class="content-section">
+      <h2 class="section-title">Systems Integration</h2>
+      <ul>
+        <li>Designed a sensing stage combining inhalation flow detection with independent canister-actuation detection, so a dose is only confirmed when both events occur within a defined window. This redundancy eliminated the false confirmations produced by the earlier single-sensor prototype.</li>
+        <li>Implemented the embedded control layer on an AVR-class microcontroller in C, structured as a non-blocking state machine with ADC sampling of the analog front end, debounce logic on the actuation input, and timer-driven output control.</li>
+        <li>Drove an ERM vibration motor through PWM for a distinct tactile confirmation pulse, paired with a short piezo acoustic cue for users who prefer auditory feedback, with both cues tuned to be distinguishable from ambient vibration and noise.</li>
+        <li>Designed a hall-effect and mechanical switch arrangement for actuation detection that remained reliable across canister travel and did not depend on the user gripping the device in a specific orientation.</li>
+        <li>Applied low-power sleep modes and event-driven wake logic to meet the battery-life target, gating the microcontroller into deep sleep between doses and waking on the actuation interrupt.</li>
+      </ul>
+    </div>
+
+    <!-- Mechanical Design & Prototyping -->
+    <div class="content-section">
+      <h2 class="section-title">Mechanical Design & Prototyping</h2>
+      <ul>
+        <li>Modeled the enclosure in SolidWorks as a multi-part assembly with a two-shell clamshell, snap-fit closures, and a canister retention collar sized to standard inhaler geometry.</li>
+        <li>Generated manufacturing drawings and toleranced the canister insertion path and sensor mounting features, since sensor standoff distance directly affected detection reliability.</li>
+        <li>Produced iterative FDM prototypes to test grip ergonomics, button placement, and shell fit, moving through at least three enclosure revisions based on handling feedback.</li>
+        <li>Progressed electronics from breadboard to a soldered perfboard build to a compact assembly sized to the final enclosure, with the analog front end kept physically separated from the motor drive to avoid switching noise coupling into the sensing path.</li>
+        <li>Verified actuator force and travel against the mechanical design using bench measurement, confirming the device did not increase the force required to actuate the canister beyond what a user with limited grip strength could comfortably apply.</li>
+      </ul>
+    </div>
+
+    <!-- Testing & Validation -->
+    <div class="content-section">
+      <h2 class="section-title">Testing & Validation</h2>
+      <ul>
+        <li>Bench-tested the sensing stage using a syringe-driven flow source to simulate inhalation profiles at controlled rates, characterizing detection threshold and response latency across the expected flow range.</li>
+        <li>Measured feedback latency from actuation event to onset of vibration, confirming the design stayed within the 500 millisecond requirement.</li>
+        <li>Ran repeated actuation cycles to verify dose detection did not drift or degrade as the canister emptied and travel characteristics changed.</li>
+        <li>Conducted usability evaluation with participants using the device under simulated low-vision conditions, observing whether users could identify dose confirmation without visual cues and whether the feedback was distinguishable from handling noise.</li>
+        <li>Maintained structured test logs and a requirements traceability matrix linking each specification to the test that verified it, which fed directly into design review documentation.</li>
+      </ul>
+    </div>
+
+    <!-- Technical Communication -->
+    <div class="content-section">
+      <h2 class="section-title">Technical Communication & Collaboration</h2>
+      <ul>
+        <li>Delivered formal design reviews at each project milestone, presenting requirement rationale, trade-off decisions, prototype results, and remaining risk to reviewers under competition deadlines.</li>
+        <li>Produced the final technical presentation and supporting documentation package, including system architecture diagrams, test evidence, and the traceability matrix.</li>
+        <li>Coordinated across electrical, mechanical, and biomedical workstreams to keep interfaces between subsystems defined and to resolve integration conflicts before they reached the prototype stage.</li>
+      </ul>
+    </div>
+
+    <!-- Results -->
+    <div class="content-section">
+      <h2 class="section-title">Results</h2>
+      <p>The final prototype confirmed correct dose delivery through redundant tactile and acoustic feedback with no false positives observed during bench testing, met the sub-500 millisecond feedback latency requirement, and preserved standard canister compatibility without increasing actuation force. The design demonstrated that non-visual dose confirmation is achievable within a handheld form factor and a competition-level budget and timeline.</p>
+    </div>
+
+    <!-- Prev/Next -->
+    <nav class="project-nav">
+      <a href="house-price-ml.html" class="project-nav-btn prev">
+        <span class="nav-label">&#8592; Previous</span>
+        <span class="nav-title">House Price ML</span>
+      </a>
+      <a href="../index.html" class="project-nav-btn next">
+        <span class="nav-label">Next &#8594;</span>
+        <span class="nav-title">Home</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" src="" alt="">
 </div>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Bruno Lauer &middot; <a href="https://github.com/Blauer4096" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
 <script src="../assets/js/main.js"></script>
 </body>
 </html>

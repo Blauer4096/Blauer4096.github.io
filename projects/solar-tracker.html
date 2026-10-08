@@ -3,51 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solar Tracker: 2-Axis Gimbal System — Bruno Lauer</title>
+<title>SunSeeker: Self-Maintaining Solar Tracker - Bruno Lauer</title>
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
-<div class="wrap">
-  <header style="padding: 36px 0 24px;">
-    <nav class="links" style="margin-bottom: 16px;">
-      <a href="../index.html">← Home</a>
-      <a href="index.html">All Projects</a>
-      <a href="../about.html">About</a>
-      <a href="../resume.html">Résumé</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-    <div class="card-top">
-      <h1>Solar Tracker — 2-Axis Gimbal System</h1>
-      <span class="badge">Embedded</span>
-    </div>
-    <p class="tagline">Embedded two-axis solar tracking platform engineered to boost photovoltaic panel efficiency by 5–10% using photoresistor feedback and servo-driven gimbals.</p>
-  </header>
+<body class="light">
 
-  <section style="padding: 32px 0;">
-    <h2>Project Overview</h2>
-    <p class="section-sub">Developed at Western University (April 2024). Standard fixed photovoltaic installations achieve only ~20% energy conversion efficiency due to suboptimal solar incidence angles throughout the day. This project designed and validated an active 2-axis solar tracking and self-maintenance system.</p>
-
-    <h2>Key Specifications & Architecture</h2>
-    <ul>
-      <li><strong>Hardware Platform:</strong> Arduino UNO microcontroller, 5x7" photovoltaic test panel, dual servo motors (azimuth and elevation axes), 4 directional photoresistors (LDRs).</li>
-      <li><strong>Control Loop:</strong> Differential analog light sensing with threshold hysteresis to prevent servo jitter; iterative PID parameter tuning for stable tracking response.</li>
-      <li><strong>Tracking Efficiency:</strong> Achieved 82% tracking efficiency across simulated diurnal arcs.</li>
-      <li><strong>Additional Mechanisms:</strong> Evaluated multi-augmentation strategies via AHP decision matrix, incorporating a self-cleaning wiper mechanism concept for dust and debris mitigation.</li>
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="nav-brand">Bruno Lauer</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="index.html">Projects</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+      <li><a href="../contact.html">Contact</a></li>
     </ul>
-
-    <h2>System Documentation & Figures</h2>
-    <p class="section-sub">Selected architectural diagrams and test logs extracted from project documentation:</p>
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
-      <div class="card" style="padding: 12px;"><img src="../assets/images/solar-tracker/page-02.png" alt="Solar Tracker System Overview" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">System Architecture & Layout</p></div>
-      <div class="card" style="padding: 12px;"><img src="../assets/images/solar-tracker/page-06.png" alt="Decision Matrix" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">AHP Decision Matrix</p></div>
-      <div class="card" style="padding: 12px;"><img src="../assets/images/solar-tracker/page-10.png" alt="Circuit & PCB Design" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">Schematic & PCB Layout</p></div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <footer>
-    <p>Bruno Lauer · <a href="https://github.com/Blauer4096" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank">LinkedIn</a> · <a href="mailto:lb2017dec5@gmail.com">Email</a></p>
-  </footer>
+<main>
+  <div class="wrap">
+
+    <header class="page-header">
+      <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Projects</a> / Solar Tracker</p>
+      <span class="badge">Embedded Systems</span>
+      <h1 class="page-title">SunSeeker: Self-Maintaining Solar Tracker</h1>
+      <p class="page-subtitle">An autonomous two-axis photovoltaic tracking platform combined with a self-cleaning windshield wiper mechanism, engineered to boost panel output and reduce maintenance for geographies where traditional fixed solar arrays underperform.</p>
+    </header>
+
+    <!-- Specs -->
+    <div class="content-section">
+      <h2 class="section-title">Project Specifications</h2>
+      <table class="specs-table">
+        <tr><th>Role</th><td>Lead Embedded Systems & Hardware Design Engineer</td></tr>
+        <tr><th>Course</th><td>ECE 2242: Embedded Systems and Design, Western University</td></tr>
+        <tr><th>Timeline</th><td>Spring 2024 (one-semester, two-month academic capstone)</td></tr>
+        <tr><th>Control Platform</th><td>Arduino UNO (ATmega328P) with custom Printed Circuit Board</td></tr>
+        <tr><th>Solar Panel</th><td>Miniature 5&Prime; x 7&Prime; photovoltaic test panel</td></tr>
+        <tr><th>Actuation</th><td>Dual micro servo motors configured for two-axis (azimuth & elevation) tracking plus a windshield wiper cleaning mechanism</td></tr>
+        <tr><th>Sensing</th><td>Four directional photoresistors (LDRs) with characteristic-equation-based intensity calibration</td></tr>
+        <tr><th>Performance Target</th><td>Improve output voltage by 5 to 10% and reduce panel assembly size to 1.2x panel footprint</td></tr>
+        <tr><th>Budget</th><td>Strict $100 component cap plus the $50 ECE 2242 Arduino kit</td></tr>
+        <tr><th>Tools</th><td>Autodesk EAGLE, TinkerCAD, Arduino IDE, C++, SolidWorks, PCB fabrication, oscilloscope</td></tr>
+      </table>
+    </div>
+
+    <!-- Problem & Objective -->
+    <div class="content-section">
+      <h2 class="section-title">Problem & Objective</h2>
+      <p>Solar panels average only 20% efficiency, and in high-latitude regions, areas with high cloud cover, extreme altitudes, and urban centers, this is not commercially viable. Over 70% of the Earth's land surface is unsuitable for traditional fixed solar energy. The dominant causes are temperature-dependent conductivity loss, suboptimal solar incidence angle at high latitudes, and scattering from cloud cover.</p>
+      <p>The objective of SunSeeker was to design a solar panel augment device that alleviates these pain points and opens underutilized geographies (notably South America and Russia) to solar energy. The project centers on an Arduino UNO, a miniature solar panel, and a custom PCB that interact with sensors and actuators, validated through a process of customer needs analysis, weighted design selection, prototyping, and experimental testing.</p>
+    </div>
+
+    <!-- Constraints & Requirements -->
+    <div class="content-section">
+      <h2 class="section-title">Design Constraints & Prioritization</h2>
+      <p>Seven weighted constraints governed the design. An Analytical Hierarchy Process (AHP) pairwise comparison matrix quantified their relative importance:</p>
+      <table class="specs-table">
+        <tr><th>Constraint</th><th>Weight</th></tr>
+        <tr><td>Improved Output (5 to 10% voltage gain)</td><td>0.26</td></tr>
+        <tr><td>Safety</td><td>0.18</td></tr>
+        <tr><td>Easy Maintenance</td><td>0.16</td></tr>
+        <tr><td>Low Power Usage (moving parts active under 30% of runtime)</td><td>0.14</td></tr>
+        <tr><td>Accurate Tracking (&ge;70% orthogonal alignment)</td><td>0.11</td></tr>
+        <tr><td>Not Intrusive (&le;1.2x panel footprint)</td><td>0.09</td></tr>
+        <tr><td>Aesthetic</td><td>0.06</td></tr>
+      </table>
+      <p>Improved output, easy maintenance, safety, and low power usage emerged as primary constraints, while aesthetics and accurate tracking were secondary. A strict one-semester timeline and a $100 budget bounded the design space.</p>
+    </div>
+
+    <!-- Ideation & Selection -->
+    <div class="content-section">
+      <h2 class="section-title">Design Ideation & Final Selection</h2>
+      <p>Initial ideation produced six candidate concepts: solar tracker, solar wiping mechanism, solar panel heating, hybrid designs, light concentration, and flexible panels. The top three were scored against the weighted constraints on a 1 to 5 scale:</p>
+      <table class="specs-table">
+        <tr><th>Idea</th><th>Output</th><th>Maintenance</th><th>Safety</th><th>Low Energy</th><th>Total</th></tr>
+        <tr><td>Solar Tracker</td><td>5</td><td>2</td><td>3</td><td>3</td><td>13</td></tr>
+        <tr><td>Heating Panel</td><td>3</td><td>3</td><td>4</td><td>1</td><td>11</td></tr>
+        <tr><td>Wiper Mechanism</td><td>4</td><td>3</td><td>3</td><td>3</td><td>13</td></tr>
+      </table>
+      <p>The solar tracker and wiper tied for first. Given their strong synergies, the final design pursued a hybrid combining dual-axis solar tracking with an automated windshield wiper mechanism, maximizing efficiency while reducing maintenance for solar panels across diverse environments.</p>
+    </div>
+
+    <!-- System Architecture & Design -->
+    <div class="content-section">
+      <h2 class="section-title">System Architecture & Control Design</h2>
+
+      <h3 class="sub-section-title">Sensing & Photoresistor Calibration</h3>
+      <p>Four directional photoresistors (LDRs) form the light-detection front end. Each LDR changes resistance with incident photon count, and the panel is oriented toward the direction of greatest illuminance. The characteristic equation relating resistance to light intensity was derived to enable accurate differential illumination measurements:</p>
+      <p class="equation">log I = (log R1 - log R2) / (log R2 - log R1)</p>
+      <p>where R1 and R2 are resistance values at two illuminance levels I1 and I2. This calibration data drove ambiguity-free thresholding between adjacent sensor quadrants before actuating the servos.</p>
+
+      <h3 class="sub-section-title">Embedded Firmware & Actuation</h3>
+      <p>Developed in C++ within the Arduino IDE on the ATmega328P, the firmware runs a continuous sensing-to-actuation loop:</p>
+      <ul>
+        <li><strong>ADC Acquisition:</strong> Samples all four LDR voltage dividers through the onboard analog-to-digital converter.</li>
+        <li><strong>Differential Error & Hysteresis:</strong> Computes proportional error between opposing sensor pairs and applies hysteresis thresholds to prevent servo hunting near equilibrium illumination.</li>
+        <li><strong>Two-Axis Servo Drive:</strong> Updates pulse-width-modulated position commands to the azimuth and elevation servos, maintaining the panel orthogonal to the strongest light source.</li>
+        <li><strong>Wiper Coordination:</strong> Interfaces with the windshield wiper mechanism to remove debris, snow, and water on schedule, keeping the panel surface clear for maximum absorption.</li>
+      </ul>
+
+      <h3 class="sub-section-title">PCB Design & Integration</h3>
+      <p>The control electronics were laid out in Autodesk EAGLE as a custom printed circuit board, integrating the Arduino system, LDR sensor conditioning, servo motor drive circuitry, and the wiper motor interface. TinkerCAD was used for mechanical prototyping of the gimbal and wiper geometry before final assembly on the 5&Prime; x 7&Prime; panel.</p>
+      <p>The PCB kept the sensor inputs and low-level control signals separate from the servo and wiper power paths. This made the board the interface between the four voltage-divider sensors, the ATmega328P analog inputs, and the actuator supply rather than relying on loose point-to-point wiring. The mechanical model and PCB were checked against the 1.2 times panel-footprint constraint before assembly.</p>
+
+      <h3 class="sub-section-title">Tracking Logic and Maintenance Cycle</h3>
+      <p>Opposing LDR readings were treated as two error signals: left versus right for azimuth and top versus bottom for elevation. The servos moved only when the difference exceeded a calibrated threshold, which prevented continuous hunting when the four sensors saw nearly equal illumination. The wiper was treated as a separate scheduled action so cleaning did not continuously consume actuator power during normal tracking.</p>
+    </div>
+
+    <!-- Testing & Validation -->
+    <div class="content-section">
+      <h2 class="section-title">Testing & Validation</h2>
+      <p>Bench testing validated the design against the weighted constraints and the 5 to 10% output-improvement goal. The dual-axis tracking configuration demonstrated significant increases in voltage, current, and power output relative to a fixed panel baseline, aligning with the >65% adoption rate of solar augmentation observed across solar farms in India. The self-cleaning wiper reduced accumulated debris and improved light absorption during simulated inclement conditions.</p>
+      <p>Power budget analysis confirmed that moving parts stayed within the 30% active-runtime requirement, preserving the net energy gain that makes tracking economically viable.</p>
+    </div>
+
+    <!-- Figures -->
+    <div class="content-section">
+      <h2 class="section-title">Project Figures & Schematics</h2>
+      <p>Extracted from the ECE 2242 final project report. Click any image to enlarge.</p>
+      <div class="figure-grid">
+        <figure class="figure">
+          <img src="../assets/images/solar-tracker/FinalDesign.jpg" alt="Final assembled SunSeeker prototype" data-lightbox>
+          <figcaption>Fig. 1: Final assembled SunSeeker prototype with two-axis gimbal and wiper mechanism</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/images/solar-tracker/page-06.png" alt="Global solar feasibility map" data-lightbox>
+          <figcaption>Fig. 2: Global geographic feasibility of solar and wind farms</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/images/solar-tracker/page-08.png" alt="AHP pairwise comparison matrix" data-lightbox>
+          <figcaption>Fig. 3: Analytical Hierarchy Process pairwise comparison matrix and resultant constraint weightings</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/images/solar-tracker/page-09.png" alt="Experimental results" data-lightbox>
+          <figcaption>Fig. 4: Fixed versus dual-axis solar panel experimental results from the literature review</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/images/solar-tracker/page-11.png" alt="Life-size solar tracker" data-lightbox>
+          <figcaption>Fig. 5: Life-size commercial dual-axis solar tracker reference</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/images/solar-tracker/page-12.png" alt="Heating panel under solar panel" data-lightbox>
+          <figcaption>Fig. 6: Heating pad under solar panel concept evaluated in the decision matrix</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/images/solar-tracker/page-13.png" alt="Solar wiper mechanism" data-lightbox>
+          <figcaption>Fig. 7: Solar wiping mechanism integrated into the final tracker design</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/images/solar-tracker/page-14.png" alt="Idea decision matrix" data-lightbox>
+          <figcaption>Fig. 8: Idea decision matrix scoring the tracker, heating, and wiper concepts</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/images/solar-tracker/page-15.png" alt="Cost analysis, block diagram, and PCB" data-lightbox>
+          <figcaption>Fig. 9: Cost analysis, system block diagram, and EAGLE PCB design sections</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- References -->
+    <div class="content-section">
+      <h2 class="section-title">References</h2>
+      <ul>
+        <li>Parthiban & Ponnambalam (2022), "An enhancement of the Solar Panel Efficiency: A comprehensive review," Frontiers in Energy Research.</li>
+        <li>Maka & Alabid (2022), "Solar Energy Technology and its roles in Sustainable Development," Oxford Academic.</li>
+        <li>Bhoyar, "Dual-Axis Solar Tracker, A Case Study," IOSR Journal of Engineering.</li>
+        <li>ScienceDirect Topics, "Photoresistors: an overview."</li>
+      </ul>
+    </div>
+
+    <!-- Prev/Next -->
+    <nav class="project-nav">
+      <a href="bldc-motor.html" class="project-nav-btn prev">
+        <span class="nav-label">&#8592; Previous</span>
+        <span class="nav-title">BLDC Motor</span>
+      </a>
+      <a href="house-price-ml.html" class="project-nav-btn next">
+        <span class="nav-label">Next &#8594;</span>
+        <span class="nav-title">House Price ML</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" src="" alt="">
 </div>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Bruno Lauer &middot; <a href="https://github.com/Blauer4096" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
 <script src="../assets/js/main.js"></script>
 </body>
 </html>

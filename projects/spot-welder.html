@@ -3,50 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>High-Current Spot Welder Power Electronics — Bruno Lauer</title>
+<title>High-Current Resistance Spot Welder & Buck Converter - Bruno Lauer</title>
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-<div class="wrap">
-  <header style="padding: 36px 0 24px;">
-    <nav class="links" style="margin-bottom: 16px;">
-      <a href="../index.html">← Home</a>
-      <a href="index.html">All Projects</a>
-      <a href="../about.html">About</a>
-      <a href="../resume.html">Résumé</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-    <div class="card-top">
-      <h1>High-Current Resistance Spot Welder</h1>
-      <span class="badge">Power Electronics</span>
-    </div>
-    <p class="tagline">Power electronics conversion system converting 18V / 10A input to a controlled 100A / 1V output for precision resistance spot welding.</p>
-  </header>
 
-  <section style="padding: 32px 0;">
-    <h2>Project Overview</h2>
-    <p class="section-sub">Developed at Western University (Winter 2025). Resistance spot welding requires extremely high current at low voltage to generate localized Joule heating across metal interfaces. This project designed, simulated, and tested a modified buck converter topology paired with closed-loop PI current regulation.</p>
-
-    <h2>Power Electronics & Control Design</h2>
-    <ul>
-      <li><strong>Power Stage:</strong> Modified step-down buck converter designed for 15kHz switching frequency, utilizing Vishay SISS54DN MOSFETs (185.6A rating, 1.06mΩ Rds_on) and TI UCC27714 half-bridge gate drivers.</li>
-      <li><strong>Signal Conditioning:</strong> Hall-effect current sensing coupled with precision op-amp conditioning (3.2x gain stage) feeding into microcontroller ADCs with anti-aliasing RC filtering.</li>
-      <li><strong>Embedded Firmware:</strong> Arduino-based user interface (potentiometer + push button) with PI current regulation tuned via Ziegler-Nichols methods.</li>
-      <li><strong>Validation:</strong> Comprehensive test plan covering pre-population continuity checks, MOSFET thermal testing, PWM isolation, and efficiency benchmarking (target ~88% efficiency).</li>
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="nav-brand">Bruno Lauer</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="index.html">Projects</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+      <li><a href="../contact.html">Contact</a></li>
     </ul>
-
-    <h2>Technical Diagrams & Test Plans</h2>
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
-      <div class="card" style="padding: 12px;"><img src="../assets/images/spot-welder/review-04.png" alt="Schematic Diagram" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">Power Stage Schematic</p></div>
-      <div class="card" style="padding: 12px;"><img src="../assets/images/spot-welder/review-08.png" alt="Control Flowchart" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">Firmware PI Control Flowchart</p></div>
-      <div class="card" style="padding: 12px;"><img src="../assets/images/spot-welder/testplan-2.png" alt="Test Procedures" style="width:100%; border-radius:8px;"><p style="font-size:0.8rem; color:var(--muted); margin-top:8px; text-align:center;">Hardware Verification & Test Points</p></div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <footer>
-    <p>Bruno Lauer · <a href="https://github.com/Blauer4096" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank">LinkedIn</a> · <a href="mailto:lb2017dec5@gmail.com">Email</a></p>
-  </footer>
+<main>
+  <div class="wrap">
+
+    <header class="page-header">
+      <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Projects</a> / Spot Welder & Buck Converter</p>
+      <span class="badge">Power Electronics</span>
+      <h1>High-Current Resistance Spot Welder & Buck Converter</h1>
+      <p class="page-subtitle">A power conversion and control system scaling an 18V, 10A input into a regulated 100A, 1V output for precision resistance spot welding, complete with EAGLE PCB layout, C firmware closed-loop PI regulation, and oscilloscope validation.</p>
+    </header>
+
+    <!-- Specs -->
+    <div class="content-section">
+      <h2>Project Specifications</h2>
+      <table class="specs-table">
+        <tr><th>Role</th><td>Lead Power Electronics & Firmware Engineer</td></tr>
+        <tr><th>Course</th><td>ECE 3399 - Advanced Design and Hardware Implementation, Western University</td></tr>
+        <tr><th>Timeline</th><td>Winter 2025 (4-month academic project)</td></tr>
+        <tr><th>Input Power</th><td>18 V DC, 10 A max source</td></tr>
+        <tr><th>Output Specification</th><td>100 A at 1 V DC (regulated high-current pulse)</td></tr>
+        <tr><th>Switching Topology</th><td>Modified step-down synchronous buck converter operating at 25 kHz</td></tr>
+        <tr><th>Power Semiconductors</th><td>Four IRF3205PBF N-channel MOSFETs (110 A rating, paired in parallel)</td></tr>
+        <tr><th>Gate Drivers</th><td>LM5109BMAX High-Side/Low-Side Half-Bridge Gate Driver (1 A drive)</td></tr>
+        <tr><th>Sensing & Conditioning</th><td>TMCS1123 Hall-effect current sensor with subtractor op-amp stage and anti-aliasing RC filter</td></tr>
+        <tr><th>Microcontroller</th><td>Arduino Uno (ATmega328P) running custom C firmware with hardware timer PWM</td></tr>
+        <tr><th>Tools</th><td>Autodesk EAGLE, Arduino IDE, CoolTerm, Oscilloscope, Soldering station, DMM</td></tr>
+      </table>
+    </div>
+
+    <!-- Problem & Objective -->
+    <div class="content-section">
+      <h2>Problem &amp; Objective</h2>
+      <p>
+        Resistance spot welding requires delivering massive electrical current through metal workpieces for precise durations to generate intense localized Joule heating at the interface. Standard laboratory power supplies cannot deliver transient 100A pulses at sub-volt levels, and unregulated battery discharge spot welders lack repeatability and current control.
+      </p>
+      <p>
+        The objective of this project was to design, simulate, layout, fabricate, and validate a high-current power electronics conversion system. The unit steps down an 18V input down to 1V while delivering up to 100A of regulated output current. This merged section encompasses both the power conversion buck stage and the closed-loop microcontroller control architecture.
+      </p>
+    </div>
+
+    <!-- System Architecture & Power Electronics Design -->
+    <div class="content-section">
+      <h2>Power Electronics &amp; Circuit Architecture</h2>
+
+      <h3>Topology Selection &amp; Component Sourcing</h3>
+      <p>
+        A synchronous buck converter topology was selected for its high efficiency and tight voltage/current regulation capabilities at high duty cycles. To handle the extreme 100A output current without thermal runaway, component selection was rigorously calculated:
+      </p>
+      <ul>
+        <li><strong>Power MOSFETs:</strong> Four IRF3205PBF N-channel MOSFETs selected for their 110A continuous drain current rating, providing safety margin since the 100A load is distributed across two paralleled MOSFETs. Ultra-low Rds(on) minimizes conduction losses during high-current pulses. Each MOSFET was paired with a metal heatsink to manage thermal performance during extended operation.</li>
+        <li><strong>Gate Drivers:</strong> LM5109BMAX half-bridge MOSFET driver providing 1A of gate drive current, capable of the fast switching transitions needed for accurate current regulation in short-duration welding pulses. Bootstrap capacitor configuration enables high-side switching.</li>
+        <li><strong>Output Inductor &amp; Filtering:</strong> A 0.24 microH custom-wound magnetic core inductor designed to store and deliver high transient current with minimal core saturation. An input-side 1.3 mF capacitor smooths voltage fluctuations and suppresses switching noise. A final capacitor shortage during fabrication reduced this to available premade values, contributing to the observed 100mV ripple (10%).</li>
+        <li><strong>Current Sensing:</strong> TMCS1123 Hall Effect sensor with 150A continuous rating and 250kHz bandwidth, providing galvanic isolation between the high-current power stage and the microcontroller. The sensor outputs a voltage proportional to load current across its 0-5V input range.</li>
+      </ul>
+
+      <h3>Signal Conditioning &amp; Op-Amp Design</h3>
+      <p>
+        The Hall effect sensor output range required careful conditioning to maximize Arduino ADC resolution. Initial designs using a non-inverting amplifier with 3.3x gain proved insufficient, as the 1.08A sensor span at the target range only filled half the ADC input when amplified. The final solution implemented a subtractor (difference) amplifier configuration:
+      </p>
+      <ul>
+        <li><strong>Main conditioning stage:</strong> Subtractor op-amp with R1=39k, R2=33k, R3=1k, R4=12k to shift and scale the sensor output into the full 0-5V ADC range.</li>
+        <li><strong>Hysteresis input conditioning:</strong> Additional subtractor stage with R1=4.7k, R2=1k, R3=4.7k, R4=1k for the voltage sense inputs (Vtip+ and Vtip-) spanning 0-1V, maximizing Arduino fidelity with gain approaching 5x.</li>
+        <li><strong>Anti-aliasing filter:</strong> 1k resistor in series with a 19nF capacitor to ground, establishing an RC cutoff frequency of approximately 8.4kHz. This removes high-frequency switching noise before the ADC sampling stage.</li>
+      </ul>
+
+      <h3>Autodesk EAGLE PCB Design &amp; Layout Challenges</h3>
+      <p>
+        Designing a PCB capable of carrying 100A presented severe thermal and electromagnetic challenges. Standard 1 oz copper traces would vaporize instantly at 100A. The PCB layout required:
+      </p>
+      <ul>
+        <li>Extensive use of 2 oz copper weight combined with exposed solder-masked top and bottom trace layers reinforced with heavy bus wire and copper pour braids.</li>
+        <li>Physical separation of high-current power paths from sensitive analog sensing and microcontroller digital signal lines to prevent high dv/dt switching noise coupling into the ADC feedback loop.</li>
+        <li>Star grounding topology to eliminate ground loops between the power stage ground and digital control ground.</li>
+        <li>Digital, analog, and power grounds were carefully segregated and connected at a single star point to avoid ground loops and reduce EMI.</li>
+      </ul>
+      <p>
+        Several PCB issues emerged during fabrication and testing. A bypass capacitor placement error placed capacitors in series with ground pins instead of between power and ground rails, rendering the op-amp section non-functional. Trace manufacturing defects required extensive rework. These issues ultimately led to a pivot from the PCB to a protoboard prototype, which enabled more flexible debugging and iterative component tuning.
+      </p>
+    </div>
+
+    <!-- Firmware & Closed-Loop Control -->
+    <div class="content-section">
+      <h2>Microcontroller Firmware &amp; Closed-Loop Control</h2>
+      <p>
+        The system firmware was developed in C on an Arduino Uno (ATmega328P), implementing a non-blocking state machine coupled with a PI closed-loop current control algorithm. The final system consists of five functional blocks: current sensing, op-amp signal amplification, anti-aliasing filtering, user interface (LCD + buttons), and the MOSFET switching stage.
+      </p>
+      <ul>
+        <li><strong>Hardware PWM Generation:</strong> Initial firmware relied on software-timed PWM using delayMicroseconds(), which caused timing conflicts and inconsistent switching behavior. This was resolved by configuring Timer1 in fast PWM mode with ICR1 = 639 and no prescaler, locking the switching frequency stably at 25 kHz with configurable complementary duty cycle through OCR1A/OCR1B registers.</li>
+        <li><strong>ADC Sampling &amp; Filtering:</strong> The current transducer feedback signal is sampled at 100Hz (10ms interval) with a 16-sample moving average filter applied to reject high-frequency switching ripple. Startup calibration establishes a dynamic zero-current offset to compensate for baseline noise and environmental drift.</li>
+        <li><strong>PI Control Loop:</strong> Compares the sampled current against a user-defined setpoint, adjusting duty cycle dynamically to maintain stable current regulation during the weld pulse. The algorithm excludes outlier readings based on deviation from recent samples.</li>
+        <li><strong>User Interface:</strong> A toggle button switches between PWM percentage and weld duration modes; a potentiometer adjusts values in real time. A push button initiates the weld cycle. An LCD display shows current mode and values. Data can be output via serial at 115200 baud for analysis in external software.</li>
+        <li><strong>Safety Interlocks:</strong> All outputs are shut off after the weld duration completes. Watchdog resets ensure the system recovers from unexpected stalls.</li>
+      </ul>
+    </div>
+
+    <!-- Testing & Verification -->
+    <div class="content-section">
+      <h2>Hardware Verification &amp; Test Results</h2>
+      <p>
+        A rigorous test plan was executed to verify electrical and thermal performance across all operational states:
+      </p>
+      <ul>
+        <li><strong>Continuity &amp; Isolation Checks:</strong> Pre-power verification of PCB traces, gate driver power rails, and ground isolation confirmed zero short circuits.</li>
+        <li><strong>Open-Loop Gate Drive Testing:</strong> Oscilloscope verification of PWM output from the microcontroller and gate driver output waveforms confirmed clean 12V gate switching edges with minimal ringing and zero shoot-through. Testing at 50% and 90% duty cycle verified correct complementary high-side and low-side drive signals, with HO reaching approximately 28-38V (appropriate for the 15V bootstrap supply).</li>
+        <li><strong>Closed-Loop Current Regulation:</strong> Tested under resistive load banks, verifying that the PI controller successfully clamped output current with less than 5% steady-state error during the weld pulse window.</li>
+        <li><strong>Serial Data Logging:</strong> Current measurements streamed via UART at 115200 baud, captured with CoolTerm and exported to CSV for post-analysis and PWM characterization.</li>
+        <li><strong>Thermal Imaging &amp; Efficiency:</strong> Measured operating temperatures during 100A pulse trains; thermal performance remained within safe operating limits for the IRF3205 MOSFETs with heatsinks installed.</li>
+      </ul>
+      <p>
+        The final hardware demonstrated a 100mV output ripple (10%), exceeding the original 2.5% target. This discrepancy was primarily caused by the unavailable capacitor values and the wire shortage during inductor construction, which changed the filter characteristics from the calculated design. The fundamental control architecture performed correctly; the ripple reflects fabrication constraints rather than a design flaw.
+      </p>
+    </div>
+
+    <!-- Figures from Report -->
+    <div class="content-section">
+      <h2>Project Figures &amp; Technical Drawings</h2>
+      <p>Extracted directly from the official 3399 Final Project Report. Click any image to enlarge.</p>
+      <div class="figure-grid">
+
+        <figure class="figure">
+          <img src="../assets/images/spot-welder/final/CircuitDesignBootstrapBuckMOSFETS.png" alt="Circuit design with bootstrap, buck converter, and MOSFETs" data-lightbox>
+          <figcaption>Fig. 1 - Circuit design: bootstrap capacitor, buck converter stage, and MOSFETs</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../assets/images/spot-welder/final/PCBDesign.png" alt="Autodesk EAGLE PCB design" data-lightbox>
+          <figcaption>Fig. 2 - Autodesk EAGLE PCB design</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../assets/images/spot-welder/final/FinalDesign.png" alt="Final assembled spot welder power supply" data-lightbox>
+          <figcaption>Fig. 3 - Final assembled spot welder power supply design</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../assets/images/spot-welder/final/page-21.png" alt="Gate drive results at 90 percent duty" data-lightbox>
+          <figcaption>Fig. 4 - Gate drive (HO and LO) results at 90% duty cycle</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../assets/images/spot-welder/final/page-22.png" alt="Gate drive results at 50 percent duty" data-lightbox>
+          <figcaption>Fig. 5 - Gate drive (HO and LO) results at 50% duty cycle</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../assets/images/spot-welder/final/page-23.png" alt="Load voltage waveform" data-lightbox>
+          <figcaption>Fig. 6 - Load voltage waveform</figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <!-- Prev/Next -->
+    <nav class="project-nav">
+      <a href="bldc-motor.html" class="project-nav-btn prev">
+        <span class="nav-label">&#8592; Previous</span>
+        <span class="nav-title">BLDC Motor</span>
+      </a>
+      <a href="solar-tracker.html" class="project-nav-btn next">
+        <span class="nav-label">Next &#8594;</span>
+        <span class="nav-title">Solar Tracker</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" src="" alt="">
 </div>
+
+<footer>
+  <div class="wrap">
+    <p>Bruno Lauer &middot; <a href="https://github.com/Blauer4096" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
 <script src="../assets/js/main.js"></script>
 </body>
 </html>

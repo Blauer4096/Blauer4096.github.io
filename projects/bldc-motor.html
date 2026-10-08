@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLDC Motor — Bruno Lauer</title>
+<title>BLDC Motor Design, Fabrication & Validation - Bruno Lauer</title>
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
+<body class="light">
 
 <nav class="nav">
   <div class="wrap">
@@ -31,16 +31,16 @@
     <header class="page-header">
       <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Projects</a> / BLDC Motor</p>
       <span class="badge">Electromechanical</span>
-      <h1>BLDC Motor — Design, Fabrication &amp; Validation</h1>
+      <h1 class="page-title">BLDC Motor: Design, Fabrication & Validation</h1>
       <p class="page-subtitle">A custom in-runner brushless DC motor designed from electromagnetic requirements through 3D CAD modeling, component fabrication, and end-to-end performance testing.</p>
     </header>
 
     <!-- Specs -->
     <div class="content-section">
-      <h2>Project Specifications</h2>
+      <h2 class="section-title">Project Specifications</h2>
       <table class="specs-table">
-        <tr><th>Role</th><td>Sole designer — motor design calculations and SolidWorks CAD modeling</td></tr>
-        <tr><th>Course</th><td>ECE 3332a — Electric Machines Design, Western University</td></tr>
+        <tr><th>Role</th><td>Sole designer: motor design calculations and SolidWorks CAD modeling</td></tr>
+        <tr><th>Course</th><td>ECE 3332a: Electric Machines Design, Western University</td></tr>
         <tr><th>Timeline</th><td>Fall 2024 (4-month academic project)</td></tr>
         <tr><th>Team Size</th><td>4 engineering students</td></tr>
         <tr><th>Target Power</th><td>33 W (revised: 26 W after wire gauge constraint)</td></tr>
@@ -56,152 +56,129 @@
 
     <!-- Problem & Objective -->
     <div class="content-section">
-      <h2>Problem &amp; Objective</h2>
-      <p>
-        Electric machines are foundational to modern industry, powering everything from consumer electronics to electric vehicles. The objective of this project was to design and build a complete BLDC motor from first principles — selecting pole/slot counts, calculating winding parameters, modeling the geometry in CAD, fabricating components, and validating performance against design targets.
-      </p>
-      <p>
-        Brushed DC motors suffer from mechanical wear (commutator/brushes), limited efficiency, and thermal constraints. BLDC motors eliminate these issues through electronic commutation, enabling higher power density, longer service life, and better thermal performance — but introduce design complexity in the stator windings, rotor magnets, and control electronics.
-      </p>
+      <h2 class="section-title">Problem & Objective</h2>
+      <p>Electric machines are foundational to modern industry, powering everything from consumer electronics to electric vehicles. The objective of this project was to design and build a complete BLDC motor from first principles: selecting pole/slot counts, calculating winding parameters, modeling the geometry in CAD, fabricating components, and validating performance against design targets.</p>
+      <p>Brushed DC motors suffer from mechanical wear (commutator/brushes), limited efficiency, and thermal constraints. BLDC motors eliminate these issues through electronic commutation, enabling higher power density, longer service life, and better thermal performance, but introduce design complexity in the stator windings, rotor magnets, and control electronics.</p>
     </div>
 
     <!-- Design Process -->
     <div class="content-section">
-      <h2>Design Process</h2>
+      <h2 class="section-title">Design Process</h2>
 
-      <h3>Motor Type Selection</h3>
-      <p>
-        A comparison was made between brushed and brushless DC motors, with BLDC selected for its superior efficiency, power density, and lack of mechanical commutator wear. Within BLDC types, three topologies were evaluated:
-      </p>
+      <h3 class="sub-section-title">Motor Type Selection</h3>
+      <p>A comparison was made between brushed and brushless DC motors, with BLDC selected for its superior efficiency, power density, and lack of mechanical commutator wear. Within BLDC types, three topologies were evaluated:</p>
       <ul>
-        <li><strong>In-runner:</strong> rotor spins inside the stator — higher RPM, lower torque, rugged construction. Selected for this project.</li>
-        <li><strong>Out-runner:</strong> rotor外壳 rotates outside — higher torque, lower RPM, more complex assembly. Discarded due to project constraints.</li>
-        <li><strong>Axial flux (disc):</strong> disk-shaped topology — compact but difficult to manufacture in-house. Discarded.</li>
+        <li><strong>In-runner:</strong> rotor spins inside the stator: higher RPM, lower torque, rugged construction. Selected for this project.</li>
+        <li><strong>Out-runner:</strong> rotor housing rotates outside: higher torque, lower RPM, more complex assembly. Discarded due to project constraints.</li>
+        <li><strong>Axial flux (disc):</strong> disk-shaped topology: compact but difficult to manufacture in-house. Discarded.</li>
       </ul>
 
-      <h3>Pole / Slot Selection</h3>
-      <p>
-        Cogging torque — the pulsating torque caused by permanent magnet alignment with stator slots — is a critical performance metric. A 14-pole / 12-slot configuration was chosen following standard design guidelines to balance cogging minimization with manufacturability. Higher pole counts increase torque but require more complex winding; lower counts are easier to build but produce more cogging.
-      </p>
+      <h3 class="sub-section-title">Pole / Slot Selection</h3>
+      <p>Cogging torque, the pulsating torque caused by permanent magnet alignment with stator slots, is a critical performance metric. A 14-pole / 12-slot configuration was chosen following standard design guidelines to balance cogging minimization with manufacturability. Higher pole counts increase torque but require more complex winding; lower counts are easier to build but produce more cogging.</p>
 
-      <h3>Magnetic Circuit Design</h3>
-      <p>
-        Torque is produced by the interaction of permanent magnets on the rotor and the magnetic field generated by stator windings. The design process began with back-EMF and torque equations to derive the required turns per coil, wire gauge, and slot fill factor. N52 neodymium magnets were selected for their high remanence (magnetic flux density residual) and coercivity (resistance to demagnetisation).
-      </p>
-      <p>
-        The winding layout was designed as a distributed, overlapping winding across all 12 slots. Trapezoidal (120&deg; square-wave) commutation was chosen over sinusoidal, matching the BLDC controller (ESC) selected for testing.
-      </p>
+      <h3 class="sub-section-title">Magnetic Circuit Design</h3>
+      <p>Torque is produced by the interaction of permanent magnets on the rotor and the magnetic field generated by stator windings. The design process began with back-EMF and torque equations to derive the required turns per coil, wire gauge, and slot fill factor. N52 neodymium magnets were selected for their high remanence (magnetic flux density residual) and coercivity (resistance to demagnetisation).</p>
+      <p>The winding layout was designed as a distributed, overlapping winding across all 12 slots. Trapezoidal (120&deg; square-wave) commutation was chosen over sinusoidal, matching the BLDC controller (ESC) selected for testing.</p>
 
-      <h3>Wire Gauge Constraint</h3>
-      <p>
-        A significant constraint emerged in the lab: only two wire gauges were available. This required recalculating the design to meet target performance with the constrained materials. The revised design achieved 0.44 N&middot;m at 507.85 RPM at 13 V / 2 A — slightly below the original target but still representing a functional, practical motor.
-      </p>
+      <h3 class="sub-section-title">Wire Gauge Constraint</h3>
+      <p>A significant constraint emerged in the lab: only two wire gauges were available. This required recalculating the design to meet target performance with the constrained materials. The revised design achieved 0.44 N&middot;m at 507.85 RPM at 13 V / 2 A, slightly below the original target but still representing a functional, practical motor.</p>
 
-      <h3>SolidWorks Modeling</h3>
-      <p>
-        The stator and rotor were fully modeled in SolidWorks. Manufacturing drawings were generated from the 3D models, specifying tolerances, surface finishes, and assembly fits. The design was verified for magnetic clearance (air gap between rotor and stator) and mechanical clearance between the shaft and bearings.
-      </p>
+      <h3 class="sub-section-title">SolidWorks Modeling</h3>
+      <p>The stator and rotor were fully modeled in SolidWorks. Manufacturing drawings were generated from the 3D models, specifying tolerances, surface finishes, and assembly fits. The design was verified for magnetic clearance (air gap between rotor and stator) and mechanical clearance between the shaft and bearings.</p>
+
+      <h3 class="sub-section-title">Revised Design Point</h3>
+      <p>The initial design target was 33 W, 0.45 N&middot;m, and 716 RPM. Material availability changed the achievable operating point: only two winding-wire gauges were available, and the larger gauge limited the winding current to approximately 2 to 2.35 A. The design was therefore recalculated around 13 V and 2 A, giving a revised target of 26 W, 0.44 N&middot;m, and 507.85 RPM.</p>
+      <p>This constraint affected the winding choice and the expected speed, torque, and power together. It was treated as a design revision rather than presenting the original values as measured performance.</p>
+
+      <h3 class="sub-section-title">Final Mechanical Design &amp; Drive Interface</h3>
+      <p>The final assembly used a 3D-printed outer stator, an inner rotor with the magnet set and shaft, and a distributed winding terminated as three motor phases. An external ESC supplied the electronic commutation during testing; there was no custom motor-control PCB in this project. The mechanical design used a nominal 1.5 mm air gap, so shaft alignment and the squareness of the printed stator base were important to prevent rotor contact.</p>
+      <p>Testing was performed by connecting the three phase wires to the ESC and commanding speed with a potentiometer. The motor nearly spun, but friction from the tilted shaft and rotor-stator contact prevented a valid torque or speed measurement. The missing upper bearing in the later assembly also left the shaft with one effective support point, making alignment more sensitive.</p>
     </div>
 
     <!-- Challenges -->
     <div class="content-section">
-      <h2>Challenges &amp; Lessons Learned</h2>
+      <h2 class="section-title">Challenges & Lessons Learned</h2>
       <ul>
-        <li><strong>Misinterpretation of in-runner vs. out-runner geometry:</strong> The SolidWorks model was initially built with the stator and rotor positions swapped, causing a critical assembly error discovered during testing. This required a full geometry redesign — a costly lesson in verifying design assumptions against the physical meaning of each part before manufacturing.</li>
-        <li><strong>Shaft tilt from 3D printing tolerances:</strong> The rotor shaft, printed on a desktop FDM 3D printer, exhibited slight angular deviation from the rotational axis. This caused the rotor to contact the stator at one point in its rotation — a friction source that prevented free spinning and complicated the ESC testing results.</li>
+        <li><strong>Misinterpretation of in-runner vs. out-runner geometry:</strong> The SolidWorks model was initially built with the stator and rotor positions swapped, causing a critical assembly error discovered during testing. This required a full geometry redesign, a costly lesson in verifying design assumptions against the physical meaning of each part before manufacturing.</li>
+        <li><strong>Shaft tilt from 3D printing tolerances:</strong> The rotor shaft, printed on a desktop FDM 3D printer, exhibited slight angular deviation from the rotational axis. This caused the rotor to contact the stator at one point in its rotation, a friction source that prevented free spinning and complicated the ESC testing results.</li>
         <li><strong>Limited wire gauge availability:</strong> Only two gauges were available in the lab, forcing a redesign of the winding strategy and recalculation of all magnetic circuit parameters. The revised specs represent what was achievable with available materials.</li>
         <li><strong>ESC integration challenge:</strong> Connecting the motor to an off-the-shelf ESC module revealed the importance of verifying commutation timing and sensor alignment before applying power. The test procedure was refined iteratively after each failure mode was characterised.</li>
       </ul>
-      <p>
-        Key takeaway: design assumptions must be verified at each stage. Waiting to test the assembled system before checking individual component geometry and material properties led to a cascade of late-stage redesigns.
-      </p>
+      <p>Key takeaway: design assumptions must be verified at each stage. Waiting to test the assembled system before checking individual component geometry and material properties led to a cascade of late-stage redesigns.</p>
     </div>
 
     <!-- Results -->
     <div class="content-section">
-      <h2>Results &amp; Validation</h2>
-      <p>
-        Performance was validated using an ESC module at increasing voltage steps. The motor produced measurable torque, but the combination of shaft tilt and the winding redesign meant the final output fell below the original specification. The ESC was able to spin the motor — confirming that commutation logic was correct — but the friction issue prevented accurate torque characterisation.
-      </p>
-      <p>
-        The test results confirmed that with improved shaft machining and a wider range of wire gauges, the design calculations would yield the target performance. The electromagnetic design itself was sound; execution was limited by manufacturing constraints.
-      </p>
+      <h2 class="section-title">Results & Validation</h2>
+      <p>Performance was validated using an ESC module at increasing voltage steps. The motor produced measurable torque, but the combination of shaft tilt and the winding redesign meant the final output fell below the original specification. The ESC was able to spin the motor, confirming that commutation logic was correct, but the friction issue prevented accurate torque characterisation.</p>
+      <p>The test results confirmed that with improved shaft machining and a wider range of wire gauges, the design calculations would yield the target performance. The electromagnetic design itself was sound; execution was limited by manufacturing constraints.</p>
     </div>
 
     <!-- Images -->
     <div class="content-section">
-      <h2>Design Figures</h2>
+      <h2 class="section-title">Design Figures</h2>
       <p>The following figures were extracted from the project report. Click any image to enlarge.</p>
       <div class="figure-grid">
-
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-02.png" alt="Motor type comparison table" data-lightbox>
-          <figcaption>Fig. 1 — Motor type comparison (brushed vs BLDC, in-runner vs out-runner selection)</figcaption>
+          <figcaption>Fig. 1: Motor type comparison (brushed vs BLDC, in-runner vs out-runner selection)</figcaption>
         </figure>
-
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-04.png" alt="Design specifications table" data-lightbox>
-          <figcaption>Fig. 2 — Design specifications: pole/slot counts, target torque, RPM, voltage, current</figcaption>
+          <figcaption>Fig. 2: Design specifications: pole/slot counts, target torque, RPM, voltage, current</figcaption>
         </figure>
-
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-05.png" alt="Torque and current calculations" data-lightbox>
-          <figcaption>Fig. 3 — Torque and current derivation from magnetic circuit parameters</figcaption>
+          <figcaption>Fig. 3: Torque and current derivation from magnetic circuit parameters</figcaption>
         </figure>
-
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-06.png" alt="Voltage and turns calculations" data-lightbox>
-          <figcaption>Fig. 4 — Voltage, back-EMF, and turns-per-coil calculations</figcaption>
+          <figcaption>Fig. 4: Voltage, back-EMF, and turns-per-coil calculations</figcaption>
         </figure>
-
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-07.png" alt="Winding layout diagram" data-lightbox>
-          <figcaption>Fig. 5 — Winding layout showing coil connections across the 12-slot stator</figcaption>
+          <figcaption>Fig. 5: Winding layout showing coil connections across the 12-slot stator</figcaption>
         </figure>
-
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-08.png" alt="Stator SolidWorks model" data-lightbox>
-          <figcaption>Fig. 6 — Stator geometry modeled in SolidWorks (cross-section view)</figcaption>
+          <figcaption>Fig. 6: Stator geometry modeled in SolidWorks (cross-section view)</figcaption>
         </figure>
-
         <figure class="figure">
-          <img src="../assets/images/bldc-motor/page-09.png" alt="Rotor assembly SolidWorks model" data-lightbox>
-          <figcaption>Fig. 7 — Rotor assembly showing N52 magnet placement and shaft</figcaption>
+          <img src="../assets/images/bldc-motor/RotorSolidworks.png" alt="Rotor modeled in SolidWorks" data-lightbox>
+          <figcaption>Fig. 7: Rotor assembly modeled in SolidWorks showing N52 magnet placement and shaft</figcaption>
         </figure>
-
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-10.png" alt="Manufacturing drawing" data-lightbox>
-          <figcaption>Fig. 8 — Manufacturing drawing with tolerances and dimensions</figcaption>
+          <figcaption>Fig. 8: Manufacturing drawing with tolerances and dimensions</figcaption>
         </figure>
-
         <figure class="figure">
-          <img src="../assets/images/bldc-motor/page-11.png" alt="Assembly render" data-lightbox>
-          <figcaption>Fig. 9 — Full assembly render: stator housing, rotor, shaft, and bearings</figcaption>
+          <img src="../assets/images/bldc-motor/AssemblySolidworks.png" alt="Full assembly modeled in SolidWorks" data-lightbox>
+          <figcaption>Fig. 9: Full assembly modeled in SolidWorks: stator housing, rotor, shaft, and bearings</figcaption>
         </figure>
-
+        <figure class="figure">
+          <img src="../assets/images/bldc-motor/FinalDesign.png" alt="Final assembled BLDC motor" data-lightbox>
+          <figcaption>Fig. 10: Final assembled BLDC motor</figcaption>
+        </figure>
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-14.png" alt="Testing results" data-lightbox>
-          <figcaption>Fig. 10 — Testing procedure and ESC integration results</figcaption>
+          <figcaption>Fig. 11: Testing procedure and ESC integration results</figcaption>
         </figure>
-
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-15.png" alt="Shaft tilt diagram" data-lightbox>
-          <figcaption>Fig. 11 — Shaft tilt analysis: FDM printing deviation causing rotor-stator contact</figcaption>
+          <figcaption>Fig. 12: Shaft tilt analysis: FDM printing deviation causing rotor-stator contact</figcaption>
         </figure>
-
         <figure class="figure">
           <img src="../assets/images/bldc-motor/page-16.png" alt="Lessons learned" data-lightbox>
-          <figcaption>Fig. 12 — Lessons learned: design assumption errors and manufacturing constraints</figcaption>
+          <figcaption>Fig. 13: Lessons learned: design assumption errors and manufacturing constraints</figcaption>
         </figure>
-
       </div>
     </div>
 
     <!-- Prev/Next -->
     <nav class="project-nav">
-      <a href="buck-converter.html" class="project-nav-btn prev">
+      <a href="spot-welder.html" class="project-nav-btn prev">
         <span class="nav-label">&#8592; Previous</span>
-        <span class="nav-title">Buck Converter</span>
+        <span class="nav-title">Spot Welder</span>
       </a>
       <a href="solar-tracker.html" class="project-nav-btn next">
         <span class="nav-label">Next &#8594;</span>
@@ -216,7 +193,7 @@
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<footer>
+<footer class="footer">
   <div class="wrap">
     <p>Bruno Lauer &middot; <a href="https://github.com/Blauer4096" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://linkedin.com/in/bruno-lauer-353a502b2" target="_blank" rel="noopener">LinkedIn</a></p>
   </div>

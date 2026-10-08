@@ -1,6 +1,12 @@
 # Raw source materials
 Context/
 [Cc]ontext/
+_welder.txt
+_solar.txt
+
+# AI-generated residuals
+update_site.py
+MEMORY.md
 
 # System / build artifacts
 .DS_Store
